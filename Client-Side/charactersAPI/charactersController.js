@@ -3,7 +3,7 @@ const path = require("path");
 
 class charactersAPI {
     constructor() {
-        this.appData = JSON.parse(fs.readFileSync(path.resolve('./charactersAPI/data/applicationData.json')));
+        this.appData = JSON.parse(fs.readFileSync(path.resolve('./data/characterData.json')));
     }
 
     getAllCharacters() {
