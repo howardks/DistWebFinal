@@ -7,7 +7,7 @@
     {"id": 4, "name": "Patrick Star", "desc": "Patrick Star is an overweight coral pink starfish who lives under a rock in the underwater city of Bikini Bottom. He is best known as SpongeBob SquarePants' best friend. Characterized by his laziness and low intelligence, Patrick often portrays the role of the village idiot. However, there are moments when he unexpectedly showcases a deeper insight, though these instances are brief. Despite his simple-minded nature, he is a loyal friend and is skilled in the 'art of doing nothing.'", "image":"/images/patrick.jpg"},
     {"id": 5, "name": "Garold Gareth 'Gary' Wilson, Jr.", "desc": "Gary the Snail is SpongeBob SquarePants' pet sea snail, residing with him in his pineapple house on 124 Conch Street in Bikini Bottom. Unlike typical snails, Gary communicates with a 'meow' sound, mirroring the behavior of a cat. In fact, snails in the show are often depicted as the underwater equivalent of cats. Gary has a unique personality, often showcasing intelligence and emotions. He has a pink shell with indigo spots, and while he primarily moves by crawling and leaving a trail of slime, there are instances where he has been shown with legs and even shoes.", "image":"/images/gary.jpg"},
 
-    {"id": 6, "name": "?", "desc": "?", "image":"/images/?"},
-    {"id": 7, "name": "?", "desc": "?", "image":"/images/?"},
-    {"id": 8, "name": "?", "desc": "?", "image":"/images/?"}
+    {"id": 6, "name": "Aaliyah", "desc": "Aaliyah was an American singer and actress. She has been credited with helping to redefine contemporary R&B, pop, and hip hop, earning her the nicknames the Princess of R&B and Queen of Urban Pop.", "image":"/images/Aaliyah.jpg"},
+    {"id": 7, "name": "Lauryn Hill", "desc": "Lauryn is an American rapper, singer, songwriter, and record producer. She is regarded as one of the greatest rappers of all time.", "image":"/images/lauryn_hill.jpg"},
+    {"id": 8, "name": "Mary J Blige", "desc": "Mary Jane Blige is an American singer, songwriter, rapper, and actress. Often referred to as the Queen of Hip-Hop Soul and Queen of R&B.", "image":"/images/mary-j-blige.jpg"}
 ]
