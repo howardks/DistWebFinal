@@ -19,7 +19,7 @@ data.forEach(item => {
 // Function to populate Home page
 function navHome() {
     var h1 = document.querySelector("h1");
-    h1.innerHTML = "Labyrinth Characters";
+    h1.innerHTML = "Characters";
 
     var content = document.querySelector(".content")
     content.replaceChildren();
