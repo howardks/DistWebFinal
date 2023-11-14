@@ -2,11 +2,13 @@ var express = require('express');
 var path = require('path');
 
 var charactersRouter = require('./routes/characters');
+var filtersRouter = require('./routes/filters');
 var publicRouter = require('./routes/public');
 
 var app = express();
 
 app.use('/characters/', charactersRouter);
+app.use('/filters/', filtersRouter);
 app.use('/', publicRouter);
 
 
