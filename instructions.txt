@@ -1,0 +1,110 @@
+Instructions: 
+
+This Project is a group project to be completed with three members on each team.
+
+There is no template for this project.  Each team may start from scratch or build off a previously completed assignment.  Note: Projects must be completed using Node.js, Express.js, Bootstrap, JavaScript, and concepts discussed in class.
+
+There are four functionalities to the project that can be completed with one of four different architectures.
+
+The four functionalities are: 
+
+- Characters API (30 points per team member)
+    Each team member is expected to contribute to the characters API.
+- Consistent CSS, Cards, and Content Page (50 points)
+    One team member is expected to complete this.
+- Favorites API and UI (50 points)
+    One team member is expected to complete this.
+- Filters API and UI (50 points)
+    One team member is expected to complete this.
+
+The four architectures include: 
+
+- Client Side - Microservice Architecture (30 points)
+- Client Side Application (20 points)
+- Server-Side Application (15 points)
+- Static Pages (10 points)
+Note that even with static pages, the favorites and filters must be either generated server side or client side; however, the main content of the pages may be static.
+
+Functionalities: 
+
+- Characters API (30 points per team member)
+
+Each team member is expected to contribute to the characters API
+The same characters from previous assignments may be used.  The characters may be from different "universes".
+Each character must have a consistent description - The description should be similar in length.
+Each characters must have a thumbnail image to be shown in the card. 
+Each characters must have a full size image to be shown in the content section or page.  Note: the thumbnail image and the full size image will be two different files.
+
+- Consistent CSS, Cards, and Content Page (50 points)
+
+One team member is expected to complete this.
+The CSS and UI/UX must have a consistent modern feel across the site.  
+Each character will have a card with the thumbnail image and the character name.  (Each character card may include more.  This is the minimal content to include).
+When the character card is clicked, the content for the character will be shown in another page, in a modal, in a content section, or some other means.
+The character content will include the character name, description, and full size image.
+This team member will collaborate with other team members to come up with the CSS and controls for the Filters and the Favorites; however, it is not this team members responsibility to implement the CSS and controls for the Filters and Favorites.
+
+- Favorites API and UI (50 points)
+
+One team member is expected to complete this.
+The user on the page will have the ability to set a character as being a favorite.
+This functionality will be supported by a REST API that will save if the character is a favorite or not.
+This team member will collaborate with the Consistent CSS, Cards, and Content Page teammate to come up with the CSS and controls for the Favorites UI.  It is the Favorites API and UI team member's responsibility to implement the CSS and controls for the Favorites.
+The CSS and controls of the Favorites UI must have a UI/UX that has a modern feel.
+There will be no favorite characters by default.
+When refreshing the page, the site will "remember" which characters were favorites.
+
+- Filters API and UI (50 points)
+
+One team member is expected to complete this.
+The user on the page will have the ability to select a filter to alter the cards that are shown on the page.
+The code that handles the filters may be implemented on the client-side or server-side.
+There must be at least three filter types: All characters, Characters by universe (member 1 characters, member 2 character, member 3 characters), and at least one other filter type.
+This team member will collaborate with the Consistent CSS, Cards, and Content Page teammate to come up with the CSS and controls for the Filters UI.  It is the Filters API and UI team member's responsibility to implement the CSS and controls for the Filters.
+The CSS and controls of the Filters UI must have a UI/UX that has a modern feel.
+All characters will be shown by default.
+
+Architectures: 
+
+- Client Side - Microservice Architecture (30 points)
+
+The webpage must be a client-side application.
+There will be a separate Gateway API, Public API, Character API, Favorite API, and Image Server.  Each one of these will be running in its own node.js instance on its own port.
+The Public API will be used to retrieve any css, static html (index.html), or js files.
+Note: the image files can be accessed directly from the Image Server.
+The Character API will be used to retrieve the character JSON data.
+The Favorite API will be used to retrieve JSON data supporting the Favorite functionality.
+The Image Server will be used to retrieve any images for the site.
+The Gateway API will be a passthrough service that the client side application will communicate with to access the Public, Character, and Favorite API.
+The client side application will communicate with the Gateway API and the Image Server only. 
+
+- Client Side Application (20 points)
+
+The webpage must be a client-side application.
+The client side application will communicate to the server-side through a REST API.  The characters and favorites REST API can exist in the same application.  Any css, static html (index.html), js, or image files will be retrieved from the public directory.
+
+- Server-Side Application (15 points)
+
+The webpage must be a server-side application.
+All pages will be generated on the server side.
+Favorites, Filters, and the Content page may be handled on the client-side or server side.
+
+- Static Pages (10 points)
+
+The character cards may be shown from a static page.
+The content pages for each characters may be static pages.
+The Favorites and Filters may be handled on the client-side or server side.
+
+To turn in:
+
+Add to your working directory: 
+ReadMe.txt File
+Include Instructions on how to run the application. (This may just be run > node app.js)
+Include a list of all team members that contributed to the project and what each team member contributed
+This can be a simple list of the team member and which of the four functionalities the team member contributed.
+Include any special mentions for external contributors to the project.  For example, if someone from another team helped you in a significant way, give them credit where it is due.
+make a copy of your working directory and rename it to Project-Team<TeamNumber> (ie. Project-Team5)
+remove the below files,
+node_modules/
+zip the directory (file name should be Project-Team<TeamNumber>.zip ie. Project-Team5.zip), and
+submit to the Assignment (formerly dropbox)
