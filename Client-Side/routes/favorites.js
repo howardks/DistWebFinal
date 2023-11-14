@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var FavoritesController = require('../charactersAPI/favoritesController');
+var FavoritesController = require('../favoritesAPI/favoritesController');
 var favoritesController = new FavoritesController();
 
 router.post('/favorites/add/:id', function(req, res) {
