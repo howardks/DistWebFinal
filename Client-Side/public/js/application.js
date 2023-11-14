@@ -45,6 +45,11 @@ function navigate(id) {
     var desc = document.createElement("p");
     desc.innerHTML = `${charData.desc}`;
     content.append(desc);
+
+    var favButton = document.createElement("button");
+    favButton.innerHTML = "Add to Favorites";
+    favButton.onclick = function() { addFavorite(id); };
+    content.append(favButton);
 }
 
 // Function to retrieve all Character data from REST API
@@ -65,4 +70,15 @@ function getCharacter(id) {
     xhttp.send();
 
     return JSON.parse(xhttp.responseText);
+}
+
+function addFavorite(id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/favorites/" + id, true);
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            alert("Character added to favorites!");
+        }
+    };
+    xhttp.send();
 }
