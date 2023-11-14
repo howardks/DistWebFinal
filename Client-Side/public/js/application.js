@@ -53,7 +53,7 @@ function generateContent(data) {
     
     // Create a card for each character
     var grid = document.createElement("div");
-    grid.classList.add("row", "row-cols-2", "row-cols-md-3", "row-cols-lg-4", "g-4", "mx-5", "my-4", "d-flex");
+    grid.classList.add("row", "row-cols-2", "row-cols-md-3", "row-cols-lg-4", "row-cols-xl-6", "g-4", "mx-5", "my-4", "d-flex");
 
     data.forEach(item => {
         var col = document.createElement("div");
