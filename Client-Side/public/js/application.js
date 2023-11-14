@@ -10,23 +10,23 @@ function generateNav() {
 
     nav.innerHTML = 
     `<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
-        <div class="container-fluid">
-            <span class="fs-1 text-white mb-2">Characters</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container-fluid border-bottom border-primary">
+            <span class="fs-1 text-white mb-2 ms-1">Characters</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample03">
-                <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
-                <form class="d-flex bg-primary rounded">
+            <div class="collapse navbar-collapse" id="navigation">
+            <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
+                <form class="d-flex border border-primary rounded mx-4 mb-1">
                     <ul class="nav navbar-nav me-auto mb-2 mb-sm-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">Filters</a>
-                            <ul class="dropdown-menu dropdown-menu-end border-primary">
-                                <li><a class="dropdown-item" href="#">All Characters</a></li>
+                            <ul class="dropdown-menu border-primary bg-dark text-white dropdown-menu-end">
+                                <li><a class="dropdown-item text-white" href="#">All Characters</a></li>
                                 <li><hr class="dropdown-divider bg-primary"></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Another action</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Something else here</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -60,7 +60,7 @@ function generateContent(data) {
         col.classList.add("col");
 
         col.innerHTML = 
-        `<div class="card h-100 border-dark">
+        `<div class="card h-100 border-primary">
             <div class="card-header bg-dark text-white">
                 <span class="fs-4">${item.name}</span>
                 <span class="float-end pt-1">${favoriteSVG}</span>
@@ -81,16 +81,6 @@ function generateContent(data) {
 function generateModal(id) {
     // Just for testing
     //navigate(id);
-}
-
-// Function to populate Home page
-function navHome() {
-    var h1 = document.querySelector("h1");
-    h1.innerHTML = "Characters";
-
-    var content = document.querySelector(".content")
-    content.replaceChildren();
-    content.append("Please select a button above.");
 }
 
 // Function to populate Character pages by ID
