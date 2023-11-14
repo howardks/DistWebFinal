@@ -67,9 +67,8 @@ function generateContent(data) {
             </div>
             <img src="${item.image}" alt="${item.name} image">
             <div class="card-body d-flex flex-column bg-dark">                
-                <button class="btn btn-primary mt-auto" onclick="generateModal(${item.id})">View</a>
+                <button class="btn btn-primary mt-auto" onclick="navigate(${item.id})">View</a>
             </div>
-            
         </div>`;
 
         grid.append(col);
@@ -89,19 +88,25 @@ function navigate(id) {
     
     var content = document.querySelector(".content")
     content.replaceChildren();
-    
-    var h2 = document.createElement("h2");
-    h2.innerHTML = `${charData.name}`;
-    content.append(h2);
-    
-    var img = document.createElement("img");
-    img.setAttribute("src", `${charData.image}`);
-    img.classList.add("char-img");
-    content.append(img);
 
-    var desc = document.createElement("p");
-    desc.innerHTML = `${charData.desc}`;
-    content.append(desc);
+    content.innerHTML = 
+    `<div class="mx-5 my-4">
+        <h2 class="text-white">${charData.name}</h2>
+        <img class="border border-primary my-3" src="${charData.image}">
+        <p class="text-white">${charData.desc}</p>
+    </div>
+    <div class="mx-5 mb-4">
+        <button id="previous-btn" class="btn border-primary text-white">Previous</button>
+        <button id="close-btn" class="btn border-primary text-white">Close</button>
+        <button id="next-btn" class="btn border-primary text-white">Next</button>
+    </div>`;
+    
+    let prev = (id > 0) ? id - 1 : this.data.length - 1;
+    let next = (id < this.data.length - 1) ? id + 1 : 0;
+
+    document.querySelector("#close-btn").setAttribute("onclick", `generateContent(${JSON.stringify(this.data)})`); // Doesn't work yet
+    document.querySelector("#previous-btn").setAttribute("onclick", `navigate(${this.data[prev].id})`);
+    document.querySelector("#next-btn").setAttribute("onclick", `navigate(${this.data[next].id})`);
 }
 
 // Function to retrieve all Character data from REST API
