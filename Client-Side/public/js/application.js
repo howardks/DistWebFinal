@@ -128,14 +128,3 @@ function getCharacter(id) {
 
     return JSON.parse(xhttp.responseText);
 }
-
-function addFavorite(id) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/favorites/" + id, true);
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            alert("Character added to favorites!");
-        }
-    };
-    xhttp.send();
-}
