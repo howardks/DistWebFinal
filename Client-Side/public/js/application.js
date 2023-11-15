@@ -1,8 +1,21 @@
-// Get character data from the REST API
-var data = this.getCharacters();
+// SVGs for favorite and not favorite
+var notFavoriteSVG = 
+`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-heart" viewBox="0 0 16 16">
+    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+</svg>`;
+var favoriteSVG = 
+`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-heart-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg>`;
 
-generateNav();
-generateContent(data);
+function initialize() {
+    var data = getCharacters(); // Fetch characters
+
+    generateNav();
+    generateContent(data); // Use the fetched data
+}
+
+initialize();
 
 function generateNav() {
     // Populate NavBar with home button and character buttons
@@ -37,16 +50,6 @@ function generateNav() {
 }
 
 function generateContent(data) {
-    // SVGs for favorite and not favorite
-    var notFavoriteSVG = 
-    `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-heart" viewBox="0 0 16 16">
-        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-    </svg>`;
-    var favoriteSVG = 
-    `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-heart-fill" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-    </svg>`;
-
     // Set up content
     var content = document.querySelector(".content");
     content.replaceChildren();
@@ -55,15 +58,20 @@ function generateContent(data) {
     var grid = document.createElement("div");
     grid.classList.add("row", "row-cols-2", "row-cols-md-3", "row-cols-lg-4", "row-cols-xl-6", "g-4", "mx-5", "my-4", "d-flex");
 
+    var favorites = getFavorites();
+
     data.forEach(item => {
         var col = document.createElement("div");
         col.classList.add("col");
+
+        var isFavorite = favorites.includes(item.id.toString());
+        var favoriteIcon = isFavorite ? favoriteSVG : notFavoriteSVG;
 
         col.innerHTML = 
         `<div class="card h-100 border-primary">
             <div class="card-header bg-dark text-white">
                 <span class="fs-4">${item.name}</span>
-                <span class="float-end pt-1">${favoriteSVG}</span>
+                <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
             </div>
             <img src="${item.image}" alt="${item.name} image">
             <div class="card-body d-flex flex-column bg-dark">                
@@ -73,7 +81,7 @@ function generateContent(data) {
 
         grid.append(col);
     });
-    
+
     content.append(grid);
 }
 
@@ -127,4 +135,32 @@ function getCharacter(id) {
     xhttp.send();
 
     return JSON.parse(xhttp.responseText);
+}
+
+function getFavorites() {
+    var xhttp = new XMLHttpRequest();
+    var url = 'http://localhost:3050/favorites/';
+    xhttp.open("GET", url, false);  
+    xhttp.send();
+
+    return JSON.parse(xhttp.responseText);
+}
+
+
+function toggleFavorite(id, iconElement) {
+    var favorites = getFavorites();
+    var isFavorite = favorites.includes(id.toString());
+    var method = isFavorite ? 'DELETE' : 'POST';
+    var url = `http://localhost:3050/favorites/${isFavorite ? 'remove' : 'add'}/${id}`;
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onload = function() {
+        var updatedFavorites = getFavorites();
+        var isNowFavorite = updatedFavorites.includes(id.toString());
+
+        iconElement.innerHTML = isNowFavorite ? favoriteSVG : notFavoriteSVG;
+    };
+
+    xhttp.open(method, url, true);
+    xhttp.send();
 }
