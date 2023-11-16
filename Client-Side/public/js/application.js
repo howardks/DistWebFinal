@@ -75,7 +75,7 @@ function generateContent(data) {
                 <span class="fs-4">${item.name}</span>
                 <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
             </div>
-            <img src="thumb-${item.image}" alt="${item.name} image">
+            <img src="/images/thumb-${item.image}" alt="${item.name} image">
             <div class="card-body d-flex flex-column bg-dark">                
                 <button class="btn btn-primary mt-auto" onclick="generateModal(${item.id})">View</a>
             </div>
@@ -115,7 +115,7 @@ function populateModal(id) {
     
     var modalBody = document.querySelector("#modal-body");
     modalBody.innerHTML = 
-    `<img class="mb-2" src="${this.data[id].image}" width="100%">
+    `<img class="mb-2" src="/images/${this.data[id].image}" alt="${this.data[id].name} image" width="100%">
     <p class="mb-0">${this.data[id].desc}</p>`;
 
     let prev = (id > 0) ? id - 1 : this.data.length - 1;
@@ -123,36 +123,9 @@ function populateModal(id) {
     
     var modalFooter = document.querySelector("#modal-footer");
     modalFooter.innerHTML = 
-    `<button type="button" class="btn btn-dark" onclick="populateModal(${this.data[prev].id})">Prev</button>
+    `<button type="button" class="btn btn-dark border-primary" onclick="populateModal(${this.data[prev].id})">Prev</button>
     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-dark" onclick="populateModal(${this.data[next].id})">Next</button>`;
-}
-
-// Function to populate Character pages by ID
-function navigate(id) {
-    var charData = this.getCharacter(id);
-    
-    var content = document.querySelector(".content")
-    content.replaceChildren();
-
-    content.innerHTML = 
-    `<div class="mx-5 my-4">
-        <h2 class="text-white">${charData.name}</h2>
-        <img class="border border-primary my-3" src="${charData.image}">
-        <p class="text-white">${charData.desc}</p>
-    </div>
-    <div class="mx-5 mb-4">
-        <button id="previous-btn" class="btn border-primary text-white">Previous</button>
-        <button id="close-btn" class="btn border-primary text-white">Close</button>
-        <button id="next-btn" class="btn border-primary text-white">Next</button>
-    </div>`;
-    
-    let prev = (id > 0) ? id - 1 : this.data.length - 1;
-    let next = (id < this.data.length - 1) ? id + 1 : 0;
-
-    document.querySelector("#close-btn").setAttribute("onclick", `generateContent(${JSON.stringify(this.data)})`); // Doesn't work yet
-    document.querySelector("#previous-btn").setAttribute("onclick", `navigate(${this.data[prev].id})`);
-    document.querySelector("#next-btn").setAttribute("onclick", `navigate(${this.data[next].id})`);
+    <button type="button" class="btn btn-dark border-primary" onclick="populateModal(${this.data[next].id})">Next</button>`;
 }
 
 // Function to retrieve all Character data from REST API
