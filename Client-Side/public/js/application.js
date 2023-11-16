@@ -8,14 +8,14 @@ var favoriteSVG =
     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 </svg>`;
 
+var data = getCharacters(); // Fetch characters
+initialize();
+
 function initialize() {
-    var data = getCharacters(); // Fetch characters
 
     generateNav();
     generateContent(data); // Use the fetched data
 }
-
-initialize();
 
 function generateNav() {
     // Populate NavBar with home button and character buttons
@@ -31,18 +31,20 @@ function generateNav() {
 
             <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
-                <form class="d-flex border border-primary rounded mx-4 mb-1">
-                    <ul class="nav navbar-nav me-auto mb-2 mb-sm-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">Filters</a>
-                            <ul class="dropdown-menu border-primary bg-dark text-white dropdown-menu-end">
-                                <li><a class="dropdown-item text-white" href="#">All Characters</a></li>
-                                <li><hr class="dropdown-divider bg-primary"></li>
-                                <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                                <li><a class="dropdown-item text-white" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <form class="d-flex border border-primary rounded mx-4 mb-1 p-2">
+                    <div class="text-white ms-1 me-2 my-2">Filters: </div> 
+                    <select class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Default select example">
+                        <option selected>Any Universe</option>
+                        <option value="1">Labyrinth</option>
+                        <option value="2">Spongebob</option>
+                        <option value="3">R&B Singers</option>
+                    </select>
+                    <select class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Default select example">
+                        <option selected>Any Favorites</option>
+                        <option value="1">Favorites</option>
+                        <option value="2">Not Favorites</option>
+                    </select>
+                    <button class="btn text-white border-primary mx-1">Show All</button>
                 </form>
             </div>
         </div>
@@ -73,9 +75,9 @@ function generateContent(data) {
                 <span class="fs-4">${item.name}</span>
                 <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
             </div>
-            <img src="${item.image}" alt="${item.name} image">
+            <img src="thumb-${item.image}" alt="${item.name} image">
             <div class="card-body d-flex flex-column bg-dark">                
-                <button class="btn btn-primary mt-auto" onclick="navigate(${item.id})">View</a>
+                <button class="btn btn-primary mt-auto" onclick="generateModal(${item.id})">View</a>
             </div>
         </div>`;
 
@@ -83,11 +85,47 @@ function generateContent(data) {
     });
 
     content.append(grid);
+
+    var modalTemplate = document.createElement("div");
+    modalTemplate.innerHTML = 
+    `<div id="content-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div id="modal-header" class="modal-header"></div>
+                <div id="modal-body" class="modal-body"></div>
+                <div id="modal-footer" class="modal-footer"></div>
+            </div>
+        </div>
+    </div>`;
+
+    content.append(modalTemplate);
 }
 
 function generateModal(id) {
-    // Just for testing
-    //navigate(id);
+    populateModal(id);
+
+    const modal = new bootstrap.Modal("#content-modal");
+    modal.show();
+   
+}
+
+function populateModal(id) {
+    var modalHeader = document.querySelector("#modal-header");
+    modalHeader.innerHTML = `<h4>${this.data[id].name}</h4>`;
+    
+    var modalBody = document.querySelector("#modal-body");
+    modalBody.innerHTML = 
+    `<img class="mb-2" src="${this.data[id].image}" width="100%">
+    <p class="mb-0">${this.data[id].desc}</p>`;
+
+    let prev = (id > 0) ? id - 1 : this.data.length - 1;
+    let next = (id < this.data.length - 1) ? id + 1 : 0;
+    
+    var modalFooter = document.querySelector("#modal-footer");
+    modalFooter.innerHTML = 
+    `<button type="button" class="btn btn-dark" onclick="populateModal(${this.data[prev].id})">Prev</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-dark" onclick="populateModal(${this.data[next].id})">Next</button>`;
 }
 
 // Function to populate Character pages by ID
