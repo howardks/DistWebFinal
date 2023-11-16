@@ -8,8 +8,9 @@ var favoriteSVG =
     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 </svg>`;
 
+var data = getCharacters(); // Fetch characters
+
 function initialize() {
-    var data = getCharacters(); // Fetch characters
 
     generateNav();
     generateContent(data); // Use the fetched data
@@ -31,18 +32,20 @@ function generateNav() {
 
             <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
-                <form class="d-flex border border-primary rounded mx-4 mb-1">
-                    <ul class="nav navbar-nav me-auto mb-2 mb-sm-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">Filters</a>
-                            <ul class="dropdown-menu border-primary bg-dark text-white dropdown-menu-end">
-                                <li><a class="dropdown-item text-white" href="#">All Characters</a></li>
-                                <li><hr class="dropdown-divider bg-primary"></li>
-                                <li><a class="dropdown-item text-white" href="#">Another action</a></li>
-                                <li><a class="dropdown-item text-white" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <form class="d-flex border border-primary rounded mx-4 mb-1 p-2">
+                    <div class="text-white ms-1 me-2 my-2">Filters: </div> 
+                    <select class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Default select example">
+                        <option selected>Any Universe</option>
+                        <option value="1">Labyrinth</option>
+                        <option value="2">Spongebob</option>
+                        <option value="3">R&B Singers</option>
+                    </select>
+                    <select class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Default select example">
+                        <option selected>Any Favorites</option>
+                        <option value="1">Favorites</option>
+                        <option value="2">Not Favorites</option>
+                    </select>
+                    <button class="btn text-white border-primary mx-1">Show All</button>
                 </form>
             </div>
         </div>
