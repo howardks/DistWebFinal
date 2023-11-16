@@ -9,14 +9,13 @@ var favoriteSVG =
 </svg>`;
 
 var data = getCharacters(); // Fetch characters
+initialize();
 
 function initialize() {
 
     generateNav();
     generateContent(data); // Use the fetched data
 }
-
-initialize();
 
 function generateNav() {
     // Populate NavBar with home button and character buttons
@@ -76,9 +75,9 @@ function generateContent(data) {
                 <span class="fs-4">${item.name}</span>
                 <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
             </div>
-            <img src="${item.image}" alt="${item.name} image">
+            <img src="thumb-${item.image}" alt="${item.name} image">
             <div class="card-body d-flex flex-column bg-dark">                
-                <button class="btn btn-primary mt-auto" onclick="navigate(${item.id})">View</a>
+                <button class="btn btn-primary mt-auto" onclick="generateModal(${item.id})">View</a>
             </div>
         </div>`;
 
@@ -86,11 +85,47 @@ function generateContent(data) {
     });
 
     content.append(grid);
+
+    var modalTemplate = document.createElement("div");
+    modalTemplate.innerHTML = 
+    `<div id="content-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div id="modal-header" class="modal-header"></div>
+                <div id="modal-body" class="modal-body"></div>
+                <div id="modal-footer" class="modal-footer"></div>
+            </div>
+        </div>
+    </div>`;
+
+    content.append(modalTemplate);
 }
 
 function generateModal(id) {
-    // Just for testing
-    //navigate(id);
+    populateModal(id);
+
+    const modal = new bootstrap.Modal("#content-modal");
+    modal.show();
+   
+}
+
+function populateModal(id) {
+    var modalHeader = document.querySelector("#modal-header");
+    modalHeader.innerHTML = `<h4>${this.data[id].name}</h4>`;
+    
+    var modalBody = document.querySelector("#modal-body");
+    modalBody.innerHTML = 
+    `<img class="mb-2" src="${this.data[id].image}" width="100%">
+    <p class="mb-0">${this.data[id].desc}</p>`;
+
+    let prev = (id > 0) ? id - 1 : this.data.length - 1;
+    let next = (id < this.data.length - 1) ? id + 1 : 0;
+    
+    var modalFooter = document.querySelector("#modal-footer");
+    modalFooter.innerHTML = 
+    `<button type="button" class="btn btn-dark" onclick="populateModal(${this.data[prev].id})">Prev</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-dark" onclick="populateModal(${this.data[next].id})">Next</button>`;
 }
 
 // Function to populate Character pages by ID
