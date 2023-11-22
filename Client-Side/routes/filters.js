@@ -2,15 +2,17 @@ var path = require('path');
 var express = require('express');
 var router = express.Router();
 
-var filtersController = require('../filtersAPI/filtersController');
+var FiltersAPI = require('../filtersController');
+var filtersAPI = new FiltersAPI();
 
 //put routes in here
-
-router.get('/', function(req, res, next) {
-    let filter = new filtersController();
-    filter.getMember();
-
+router.get('/universe/:universeId', (req, res) => {
+    const universeId = parseInt(req.params.universeId);
+    const filteredCharacters = filtersAPI.getCharactersByUniverse(universeId);
+    res.json(filteredCharacters);
 });
+
+// TODO: Add route for filtering by favorites
 
 
 

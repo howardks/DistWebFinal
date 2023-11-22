@@ -49,7 +49,10 @@ function generateNav() {
             </div>
         </div>
     </nav>`;
+    
 }
+
+
 
 function generateContent(data) {
     // Set up content
@@ -173,5 +176,47 @@ function toggleFavorite(id, iconElement) {
     };
 
     xhttp.open(method, url, true);
+    xhttp.send();
+}
+// Assuming you have a dropdown with the class 'universe-filter'
+document.addEventListener('DOMContentLoaded', function() {
+    var universeFilter = document.querySelector('select[name=""]'); // Assuming you add a name attribute
+
+    universeFilter.addEventListener('change', function() {
+        var universeId = this.value;
+        getCharactersByUniverse(universeId);
+    });
+});
+
+function getCharactersByUniverse(universeId) {
+    var xhttp = new XMLHttpRequest();
+    var url = `http://localhost:3050/filters/universe/${universeId}`;
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var filteredCharacters = JSON.parse(this.responseText);
+            // Step 1: Clear existing character cards
+        var characterContainer = document.getElementById('characterContainer'); // Adjust the ID as per your HTML structure
+        characterContainer.innerHTML = '';
+
+        // Step 2: Create and append new character cards
+        filteredCharacters.forEach(function(character) {
+            var card = document.createElement('div');
+            card.classList.add('character-card'); // Add necessary classes
+
+            // Example of what might go inside a card
+            card.innerHTML = `
+                <img src="${character.imageUrl}" alt="${character.name}">
+                <h3>${character.name}</h3>
+                <p>${character.description}</p>
+            `;
+
+            // Step 3: Append the card to the container
+            characterContainer.appendChild(card);
+        });
+    }
+};
+
+    xhttp.open("GET", url, true);
     xhttp.send();
 }
