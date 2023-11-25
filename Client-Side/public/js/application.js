@@ -18,7 +18,7 @@ function initialize() {
 }
 
 function generateNav(data) {
-    // Populate NavBar with home button and character buttons
+    // Populate navbar
     var nav = document.querySelector("#nav");
 
     nav.innerHTML =
