@@ -3,30 +3,22 @@ const path = require("path");
 
 class filtersAPI {
     constructor() {
-        this.appData = JSON.parse(fs.readFileSync(path.resolve('./data/characterData.json')));
+        this.appData = JSON.parse(fs.readFileSync(path.resolve('./data/filtersData.json')));
         
     }
-    getCharactersByUniverse(id) {
-        // Assuming universe value of 1 corresponds to "Labyrinth" characters
-     
-            const universeCharacterMap = {
-                1: [0, 1, 2], // Labyrinth
-                2: [3, 4, 5], // Spongebob
-                3: [6, 7, 8]  // R&B Singers
-            };
-        
-            var characterIds = universeCharacterMap[id];
-            return characterIds ? this.appData.filter(character => characterIds.includes(character.id)) : this.appData;
-        
-    }
-
-    getAllCharacters() {
+    
+    getFilters() {
         return this.appData;
     }
+    getFiltersByUniverse(universe) {
+        return this.appData.filter(item => item.universe === universe);
+    }
 
-    getFavoritesCharacters(isFavorite) {
-        // TODO: Implement the logic to filter characters based on the favorite status
-        // This might require additional data or a different approach depending on how favorites are tracked
+    getFiltersByFavorite(favorite) {
+        var favoriteVal = (favorite === "Favorites") ? true : false;
+        return this.appData.filter(item => item.favorite === favoriteVal);
+
+        
     }
 
 }
