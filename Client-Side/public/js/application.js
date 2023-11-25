@@ -33,7 +33,7 @@ function generateNav(data) {
                 <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
                 <form class="d-flex border border-primary rounded mx-4 mb-1 p-2">
                     <div class="text-white ms-1 me-2 my-2">Filters: </div> 
-                    <select id="universeFilter"" class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Select universe" onchange="performFilter(this.value,favoritesFilter.value)>
+                    <select id="universeFilter" class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Select universe" onchange="performFilter(this.value,favoritesFilter.value)">
                         <option selected>Any Universe</option>
                         <option value="Labyrinth">Labyrinth</option>
                         <option value="Spongebob">Spongebob</option>
