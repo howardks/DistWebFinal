@@ -1,12 +1,12 @@
 // SVGs for favorite and not favorite
 var notFavoriteSVG =
     `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-heart" viewBox="0 0 16 16">
-    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-</svg>`;
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </svg>`;
 var favoriteSVG =
     `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#0d6efd" class="bi bi-heart-fill" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-</svg>`;
+        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+    </svg>`;
 
 var data = getCharacters(); // Fetch characters
 initialize();
@@ -18,12 +18,11 @@ function initialize() {
 }
 
 function generateNav(data) {
-    // Populate NavBar with home button and character buttons
+    // Populate navbar
     var nav = document.querySelector("#nav");
 
-
     nav.innerHTML =
-        `<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+        `<nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Navigation">
         <div class="container-fluid border-bottom border-primary">
             <span class="fs-1 text-white mb-2 ms-1">Characters</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,36 +30,25 @@ function generateNav(data) {
             </button>
 
             <div class="collapse navbar-collapse" id="navigation">
-            <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
+                <ul class="nav navbar-nav me-auto mb-2 mb-sm-0"></ul>
                 <form class="d-flex border border-primary rounded mx-4 mb-1 p-2">
                     <div class="text-white ms-1 me-2 my-2">Filters: </div> 
-                    <select id="universeFilter" onchange="performFilter(this.value,favoritesFilter.value)" class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Default select example">
+                    <select id="universeFilter" class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Select universe" onchange="performFilter(this.value,favoritesFilter.value)">
                         <option selected>Any Universe</option>
                         <option value="Labyrinth">Labyrinth</option>
                         <option value="Spongebob">Spongebob</option>
                         <option value="R&B Singers">R&B Singers</option>
                     </select>
-                    <select id="favoritesFilter" onchange="performFilter(universeFilter.value,this.value)" class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Default select example">
+                    <select id="favoritesFilter" class="form-select-sm bg-dark text-white border-primary mx-1" aria-label="Select favorites" onchange="performFilter(universeFilter.value,this.value)">
                         <option selected>Any Favorites</option>
                         <option value="Favorites">Favorites</option>
                         <option value="Not Favorites">Not Favorites</option>
                     </select>
-                    <button onclick="clearFilter()" class="btn text-white border-primary mx-1">Show All</button>
+                    <button class="btn text-white border-primary mx-1" onclick="clearFilter()">Show All</button>
                 </form>
             </div>
         </div>
     </nav>`;
-    // function getComboA(selectObject) {
-    //     var this.value = selectObject.value;  
-    //     console.log(value);
-    //   }
-    //   <select id="comboA" onchange="getComboA(this)">
-    //     <option value="">Select combo</option>
-    //     <option value="Value1">Text1</option>
-    //     <option value="Value2">Text2</option>
-    //     <option value="Value3">Text3</option>
-    //   </select>
-
 }
 
 
@@ -85,15 +73,15 @@ function generateContent(data) {
 
         col.innerHTML =
             `<div class="card h-100 border-primary">
-            <div class="card-header bg-dark text-white">
-                <span class="fs-4">${item.name}</span>
-                <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
-            </div>
-            <img src="/images/thumb-${item.image}" alt="${item.name} image">
-            <div class="card-body d-flex flex-column bg-dark">                
-                <button class="btn btn-primary mt-auto" onclick="generateModal(${item.id})">View</a>
-            </div>
-        </div>`;
+                <div class="card-header bg-dark text-white">
+                    <span class="fs-4">${item.name}</span>
+                    <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
+                </div>
+                <img src="/images/thumb-${item.image}" alt="${item.name} image">
+                <div class="card-body d-flex flex-column bg-dark">                
+                    <button class="btn btn-primary mt-auto" onclick="generateModal(${item.id})">View</a>
+                </div>
+            </div>`;
 
         grid.append(col);
     });
@@ -103,14 +91,14 @@ function generateContent(data) {
     var modalTemplate = document.createElement("div");
     modalTemplate.innerHTML =
         `<div id="content-modal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div id="modal-header" class="modal-header"></div>
-                <div id="modal-body" class="modal-body"></div>
-                <div id="modal-footer" class="modal-footer"></div>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div id="modal-header" class="modal-header"></div>
+                    <div id="modal-body" class="modal-body"></div>
+                    <div id="modal-footer" class="modal-footer"></div>
+                </div>
             </div>
-        </div>
-    </div>`;
+        </div>`;
 
     content.append(modalTemplate);
 }
@@ -130,7 +118,7 @@ function populateModal(id) {
     var modalBody = document.querySelector("#modal-body");
     modalBody.innerHTML =
         `<img class="mb-2" src="/images/${this.data[id].image}" alt="${this.data[id].name} image" width="100%">
-    <p class="mb-0">${this.data[id].desc}</p>`;
+        <p class="mb-0">${this.data[id].desc}</p>`;
 
     let prev = (id > 0) ? id - 1 : this.data.length - 1;
     let next = (id < this.data.length - 1) ? id + 1 : 0;
@@ -138,8 +126,8 @@ function populateModal(id) {
     var modalFooter = document.querySelector("#modal-footer");
     modalFooter.innerHTML =
         `<button type="button" class="btn btn-dark border-primary" onclick="populateModal(${this.data[prev].id})">Prev</button>
-    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-dark border-primary" onclick="populateModal(${this.data[next].id})">Next</button>`;
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark border-primary" onclick="populateModal(${this.data[next].id})">Next</button>`;
 }
 
 // Function to retrieve all Character data from REST API
@@ -162,6 +150,7 @@ function getCharacter(id) {
     return JSON.parse(xhttp.responseText);
 }
 
+// Function to retrieve all Favorites data from REST API
 function getFavorites() {
     var xhttp = new XMLHttpRequest();
     var url = 'http://localhost:3050/favorites/';
@@ -171,7 +160,7 @@ function getFavorites() {
     return JSON.parse(xhttp.responseText);
 }
 
-
+// Function to add or remove favorites from JSON file in REST API
 function toggleFavorite(id, iconElement) {
     var favorites = getFavorites();
     var isFavorite = favorites.includes(id.toString());
@@ -190,7 +179,7 @@ function toggleFavorite(id, iconElement) {
     xhttp.send();
 }
 
-
+// Function to retrieve all Filters data from REST API
 function getFilters() {
     var xhttp = new XMLHttpRequest();
     var url = `http://localhost:3050/filters`;
@@ -200,6 +189,7 @@ function getFilters() {
     return JSON.parse(xhttp.responseText);
 }
 
+// Function to retrieve Filters data by universe from REST API
 function getFiltersByUniverse(universe) {
     var xhttp = new XMLHttpRequest();
     var url = `http://localhost:3050/filters/byUniverse/${universe}`;
@@ -208,6 +198,8 @@ function getFiltersByUniverse(universe) {
 
     return JSON.parse(xhttp.responseText);
 }
+
+// Function to retrieve Filters data by favorite from REST API
 function getFiltersByFavorite(favorite) {
     var xhttp = new XMLHttpRequest();
     var url = `http://localhost:3050/filters/byFavorite/${favorite}`;
@@ -216,6 +208,8 @@ function getFiltersByFavorite(favorite) {
 
     return JSON.parse(xhttp.responseText);
 }
+
+// Function to apply Filters
 function performFilter(universe, favorite) {
     var displayCharacters = this.getCharacters();
     var filters;
@@ -236,6 +230,8 @@ function performFilter(universe, favorite) {
     displayCharacters = displayCharacters.filter(char => filters.includes(char.id));
     generateContent(displayCharacters);
 }
+
+// Function to clear Filters
 function clearFilters() {
     var displayCharacters = this.getCharacters();
     generateContent(displayCharacters);
