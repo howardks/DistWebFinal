@@ -1,5 +1,4 @@
 var express = require('express');
-var path = require('path');
 
 var charactersRouter = require('./routes/characters');
 var filtersRouter = require('./routes/filters');
