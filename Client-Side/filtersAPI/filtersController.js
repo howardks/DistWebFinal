@@ -1,5 +1,5 @@
 const fs = require('fs');
-const path = require("path");
+const path = require('path');
 
 class filtersAPI {
     constructor() {
@@ -15,7 +15,7 @@ class filtersAPI {
     }
 
     getFiltersByFavorite(favorite) {
-        var favoriteVal = (favorite === "Favorites") ? true : false;
+        var favoriteVal = (favorite === 'Favorites') ? true : false;
         return this.appData.filter(item => item.favorite === favoriteVal);
     }
 }
