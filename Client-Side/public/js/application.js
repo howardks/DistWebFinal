@@ -208,19 +208,15 @@ function getFiltersByFavorite(favorite) {
 
     return JSON.parse(xhttp.responseText);
 }
+
+// Function to update favorites within Filters data
 function updateFavoriteStatus() {
-    // This will return the array of indexes we need to update.
     var favoritesByIndex = this.getFavorites();
     var fitersData = this.getFilters();
 
     fitersData.forEach(item => {
-        //Here we are looping through all the filters data
-        //we need some kind of if statement saying if favoritesIndices 
-        // includes item.id, make item.favorite = true, else make item.favorite = false
-        // then use the patch xhttp thing(var xhttp = new XMLHttpRequest();) to update the json data so that it stays.
-
+        // If the current favorite status is different from the new status, update it
         if (favoritesByIndex.includes(item.id.toString()) && item.favorite == false) {
-            // If the current favorite status is different from the new status, update it
             var xhttp = new XMLHttpRequest();
             var url = `http://localhost:3050/filters/update/${item.id}/true`;
             xhttp.open("PATCH", url, false);
@@ -230,33 +226,31 @@ function updateFavoriteStatus() {
             var url = `http://localhost:3050/filters/update/${item.id}/false`;
             xhttp.open("PATCH", url, false);
             xhttp.send();
-
         }
     });
-
 }
 
 // Function to apply Filters
-
 function performFilter(universe, favorite) {
     var displayCharacters = getCharacters(); // Get characters
     var universeFilters, favoriteFilters;
 
     // Get universe filters
-    if (universe !== "Any Universe") {
+    if (universe !== 'Any Universe') {
         universeFilters = getFiltersByUniverse(universe).map(x => x.id);
         displayCharacters = displayCharacters.filter(char => universeFilters.includes(char.id));
     }
   
     // Update favorite status before applying favorite filters
     // This will update the favorite status in the backend
+    updateFavoriteStatus();
 
     // Get favorite filters
-    if (favorite !== "Any Favorites") {
+    if (favorite !== 'Any Favorites') {
         favoriteFilters = getFiltersByFavorite(favorite).map(x => x.id);
         displayCharacters = displayCharacters.filter(char => favoriteFilters.includes(char.id));
     }
-    updateFavoriteStatus();
+
     generateContent(displayCharacters); // Assuming generateContent is defined to display characters
 }
 
@@ -265,4 +259,3 @@ function clearFilters() {
     var displayCharacters = this.getCharacters();
     generateContent(displayCharacters);
 }
-
