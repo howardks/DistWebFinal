@@ -12,22 +12,22 @@
   {
     "id": 2,
     "universe": "Labyrinth",
-    "favorite": true
+    "favorite": false
   },
   {
     "id": 3,
     "universe": "Spongebob",
-    "favorite": true
+    "favorite": false
   },
   {
     "id": 4,
     "universe": "Spongebob",
-    "favorite": true
+    "favorite": false
   },
   {
     "id": 5,
     "universe": "Spongebob",
-    "favorite": true
+    "favorite": false
   },
   {
     "id": 6,
