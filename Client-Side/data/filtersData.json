@@ -1,11 +1,47 @@
 [
-    {"id": 0, "universe": "Labyrinth", "favorite": false}, 
-    {"id": 1, "universe": "Labyrinth", "favorite": false}, 
-    {"id": 2, "universe": "Labyrinth", "favorite": false}, 
-    {"id": 3, "universe": "Spongebob", "favorite": false}, 
-    {"id": 4, "universe": "Spongebob", "favorite": false}, 
-    {"id": 5, "universe": "Spongebob", "favorite": false}, 
-    {"id": 6, "universe": "R&B Singers", "favorite": false}, 
-    {"id": 7, "universe": "R&B Singers", "favorite": false}, 
-    {"id": 8, "universe": "R&B Singers", "favorite": false}
+  {
+    "id": 0,
+    "universe": "Labyrinth",
+    "favorite": false
+  },
+  {
+    "id": 1,
+    "universe": "Labyrinth",
+    "favorite": false
+  },
+  {
+    "id": 2,
+    "universe": "Labyrinth",
+    "favorite": true
+  },
+  {
+    "id": 3,
+    "universe": "Spongebob",
+    "favorite": true
+  },
+  {
+    "id": 4,
+    "universe": "Spongebob",
+    "favorite": true
+  },
+  {
+    "id": 5,
+    "universe": "Spongebob",
+    "favorite": true
+  },
+  {
+    "id": 6,
+    "universe": "R&B Singers",
+    "favorite": false
+  },
+  {
+    "id": 7,
+    "universe": "R&B Singers",
+    "favorite": false
+  },
+  {
+    "id": 8,
+    "universe": "R&B Singers",
+    "favorite": false
+  }
 ]
