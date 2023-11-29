@@ -225,7 +225,7 @@ function updateFavoriteStatus() {
             var url = `http://localhost:3050/filters/update/${item.id}/true`;
             xhttp.open("PATCH", url, false);
             xhttp.send();
-        } else if ((!favoritesByIndex.includes(item.id) && item.favorite == true)) {
+        } else if ((!favoritesByIndex.includes(item.id.toString()) && item.favorite == true)) {
             var xhttp = new XMLHttpRequest();
             var url = `http://localhost:3050/filters/update/${item.id}/false`;
             xhttp.open("PATCH", url, false);
@@ -241,13 +241,13 @@ function updateFavoriteStatus() {
 function performFilter(universe, favorite) {
     var displayCharacters = getCharacters(); // Get characters
     var universeFilters, favoriteFilters;
-    updateFavoriteStatus();
+
     // Get universe filters
     if (universe !== "Any Universe") {
         universeFilters = getFiltersByUniverse(universe).map(x => x.id);
         displayCharacters = displayCharacters.filter(char => universeFilters.includes(char.id));
     }
-
+  
     // Update favorite status before applying favorite filters
     // This will update the favorite status in the backend
 
@@ -256,7 +256,7 @@ function performFilter(universe, favorite) {
         favoriteFilters = getFiltersByFavorite(favorite).map(x => x.id);
         displayCharacters = displayCharacters.filter(char => favoriteFilters.includes(char.id));
     }
-
+    updateFavoriteStatus();
     generateContent(displayCharacters); // Assuming generateContent is defined to display characters
 }
 
