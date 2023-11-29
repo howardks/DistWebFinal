@@ -55,18 +55,18 @@ function generateNav(data) {
 
 function generateContent(data) {
     // Set up content
-    var content = document.querySelector(".content");
+    var content = document.querySelector('.content');
     content.replaceChildren();
 
     // Create a card for each character
-    var grid = document.createElement("div");
-    grid.classList.add("row", "row-cols-2", "row-cols-md-3", "row-cols-lg-4", "row-cols-xl-6", "g-4", "mx-5", "my-4", "d-flex");
+    var grid = document.createElement('div');
+    grid.classList.add('row', 'row-cols-2', 'row-cols-md-3', 'row-cols-lg-4', 'row-cols-xl-6', 'g-4', 'mx-5', 'my-4', 'd-flex');
 
     var favorites = getFavorites();
 
     data.forEach(item => {
-        var col = document.createElement("div");
-        col.classList.add("col");
+        var col = document.createElement('div');
+        col.classList.add('col');
 
         var isFavorite = favorites.includes(item.id.toString());
         var favoriteIcon = isFavorite ? favoriteSVG : notFavoriteSVG;
@@ -88,7 +88,7 @@ function generateContent(data) {
 
     content.append(grid);
 
-    var modalTemplate = document.createElement("div");
+    var modalTemplate = document.createElement('div');
     modalTemplate.innerHTML =
         `<div id="content-modal" class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -106,16 +106,16 @@ function generateContent(data) {
 function generateModal(id) {
     populateModal(id);
 
-    const modal = new bootstrap.Modal("#content-modal");
+    const modal = new bootstrap.Modal('#content-modal');
     modal.show();
 
 }
 
 function populateModal(id) {
-    var modalHeader = document.querySelector("#modal-header");
+    var modalHeader = document.querySelector('#modal-header');
     modalHeader.innerHTML = `<h4>${this.data[id].name}</h4>`;
 
-    var modalBody = document.querySelector("#modal-body");
+    var modalBody = document.querySelector('#modal-body');
     modalBody.innerHTML =
         `<img class="mb-2" src="/images/${this.data[id].image}" alt="${this.data[id].name} image" width="100%">
         <p class="mb-0">${this.data[id].desc}</p>`;
@@ -123,7 +123,7 @@ function populateModal(id) {
     let prev = (id > 0) ? id - 1 : this.data.length - 1;
     let next = (id < this.data.length - 1) ? id + 1 : 0;
 
-    var modalFooter = document.querySelector("#modal-footer");
+    var modalFooter = document.querySelector('#modal-footer');
     modalFooter.innerHTML =
         `<button type="button" class="btn btn-dark border-primary" onclick="populateModal(${this.data[prev].id})">Prev</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -134,7 +134,7 @@ function populateModal(id) {
 function getCharacters() {
     var xhttp = new XMLHttpRequest();
     var url = `http://localhost:3050/characters/character`;
-    xhttp.open("GET", url, false);
+    xhttp.open('GET', url, false);
     xhttp.send();
 
     return JSON.parse(xhttp.responseText);
@@ -144,7 +144,7 @@ function getCharacters() {
 function getCharacter(id) {
     var xhttp = new XMLHttpRequest();
     var url = `http://localhost:3050/characters/character/${id}`;
-    xhttp.open("GET", url, false);
+    xhttp.open('GET', url, false);
     xhttp.send();
 
     return JSON.parse(xhttp.responseText);
@@ -154,7 +154,7 @@ function getCharacter(id) {
 function getFavorites() {
     var xhttp = new XMLHttpRequest();
     var url = 'http://localhost:3050/favorites/';
-    xhttp.open("GET", url, false);
+    xhttp.open('GET', url, false);
     xhttp.send();
 
     return JSON.parse(xhttp.responseText);
