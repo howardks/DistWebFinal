@@ -1,13 +1,56 @@
 [
-    {"id": 0, "name": "Jareth", "desc": "Jareth is the Goblin King. He's also David Bowie.", "image":"jareth.png"},
-    {"id": 1, "name": "The Worm", "desc": "The Worm is everyone's favorite character. He's so cute.", "image":"worm.png"},
-    {"id": 2, "name": "The Junk Lady", "desc": "The Junk Lady is great because she's covered in trash. She's a literal trash goblin.", "image":"junkLady.png"},
-
-    {"id": 3, "name": "SpongeBob SquarePants", "desc": "SpongeBob SquarePants is the central character of an American animated television series bearing his name. Created and designed by Stephen Hillenburg, SpongeBob is an optimistic sea sponge with a childlike demeanor. He is often seen spending time with his best friend, Patrick Star, working at the Krusty Krab, and attending Mrs. Puff's Boating School. The character's inception traces back to Hillenburg's unpublished educational book 'The Intertidal Zone' from the 1980s. Over the years, SpongeBob has gained immense popularity, resonating with both children and adults, and is frequently regarded as one of the greatest cartoon characters of all time.", "image":"spongebob.jpg"},
-    {"id": 4, "name": "Patrick Star", "desc": "Patrick Star is an overweight coral pink starfish who lives under a rock in the underwater city of Bikini Bottom. He is best known as SpongeBob SquarePants' best friend. Characterized by his laziness and low intelligence, Patrick often portrays the role of the village idiot. However, there are moments when he unexpectedly showcases a deeper insight, though these instances are brief. Despite his simple-minded nature, he is a loyal friend and is skilled in the 'art of doing nothing.'", "image":"patrick.jpg"},
-    {"id": 5, "name": "Garold Gareth 'Gary' Wilson, Jr.", "desc": "Gary the Snail is SpongeBob SquarePants' pet sea snail, residing with him in his pineapple house on 124 Conch Street in Bikini Bottom. Unlike typical snails, Gary communicates with a 'meow' sound, mirroring the behavior of a cat. In fact, snails in the show are often depicted as the underwater equivalent of cats. Gary has a unique personality, often showcasing intelligence and emotions. He has a pink shell with indigo spots, and while he primarily moves by crawling and leaving a trail of slime, there are instances where he has been shown with legs and even shoes.", "image":"gary.jpg"},
-
-    {"id": 6, "name": "Aaliyah", "desc": "Aaliyah was an American singer and actress. She has been credited with helping to redefine contemporary R&B, pop, and hip hop, earning her the nicknames the Princess of R&B and Queen of Urban Pop.", "image":"Aaliyah.jpg"},
-    {"id": 7, "name": "Lauryn Hill", "desc": "Lauryn is an American rapper, singer, songwriter, and record producer. She is regarded as one of the greatest rappers of all time.", "image":"lauryn_hill.jpg"},
-    {"id": 8, "name": "Mary J Blige", "desc": "Mary Jane Blige is an American singer, songwriter, rapper, and actress. Often referred to as the Queen of Hip-Hop Soul and Queen of R&B.", "image":"mary-j-blige.jpg"}
+    {
+        "id": 0,
+        "name": "Jareth",
+        "desc": "Jareth is the Goblin King. He's also David Bowie.",
+        "image": "jareth.png"
+    },
+    {
+        "id": 1,
+        "name": "The Worm",
+        "desc": "The Worm is everyone's favorite character. He's so cute.",
+        "image": "worm.png"
+    },
+    {
+        "id": 2,
+        "name": "The Junk Lady",
+        "desc": "The Junk Lady is great because she's covered in trash. She's a literal trash goblin.",
+        "image": "junkLady.png"
+    },
+    {
+        "id": 3,
+        "name": "SpongeBob SquarePants",
+        "desc": "SpongeBob SquarePants is the central character of an American animated television series bearing his name. Created and designed by Stephen Hillenburg, SpongeBob is an optimistic sea sponge with a childlike demeanor. He is often seen spending time with his best friend, Patrick Star, working at the Krusty Krab, and attending Mrs. Puff's Boating School. The character's inception traces back to Hillenburg's unpublished educational book 'The Intertidal Zone' from the 1980s. Over the years, SpongeBob has gained immense popularity, resonating with both children and adults, and is frequently regarded as one of the greatest cartoon characters of all time.",
+        "image": "spongebob.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Patrick Star",
+        "desc": "Patrick Star is an overweight coral pink starfish who lives under a rock in the underwater city of Bikini Bottom. He is best known as SpongeBob SquarePants' best friend. Characterized by his laziness and low intelligence, Patrick often portrays the role of the village idiot. However, there are moments when he unexpectedly showcases a deeper insight, though these instances are brief. Despite his simple-minded nature, he is a loyal friend and is skilled in the 'art of doing nothing.'",
+        "image": "patrick.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Garold Gareth 'Gary' Wilson, Jr.",
+        "desc": "Gary the Snail is SpongeBob SquarePants' pet sea snail, residing with him in his pineapple house on 124 Conch Street in Bikini Bottom. Unlike typical snails, Gary communicates with a 'meow' sound, mirroring the behavior of a cat. In fact, snails in the show are often depicted as the underwater equivalent of cats. Gary has a unique personality, often showcasing intelligence and emotions. He has a pink shell with indigo spots, and while he primarily moves by crawling and leaving a trail of slime, there are instances where he has been shown with legs and even shoes.",
+        "image": "gary.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Aaliyah",
+        "desc": "Aaliyah was an American singer and actress. She has been credited with helping to redefine contemporary R&B, pop, and hip hop, earning her the nicknames the Princess of R&B and Queen of Urban Pop.",
+        "image": "Aaliyah.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Lauryn Hill",
+        "desc": "Lauryn is an American rapper, singer, songwriter, and record producer. She is regarded as one of the greatest rappers of all time.",
+        "image": "lauryn_hill.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Mary J Blige",
+        "desc": "Mary Jane Blige is an American singer, songwriter, rapper, and actress. Often referred to as the Queen of Hip-Hop Soul and Queen of R&B.",
+        "image": "mary-j-blige.jpg"
+    }
 ]
