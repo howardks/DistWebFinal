@@ -74,7 +74,7 @@ function generateContent(data) {
         col.innerHTML =
             `<div class="card h-100 border-primary">
                 <div class="card-header bg-dark text-white">
-                    <span class="fs-4">${item.name}</span>
+                    <span class="fs-4">${item.shortname}</span>
                     <span class="float-end pt-1 favorite-icon" onclick="toggleFavorite(${item.id}, this)">${favoriteIcon}</span>
                 </div>
                 <img src="/images/thumb-${item.image}" alt="${item.name} image">
