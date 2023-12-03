@@ -7,7 +7,7 @@
   {
     "id": 1,
     "universe": "Labyrinth",
-    "favorite": false
+    "favorite": true
   },
   {
     "id": 2,
@@ -22,7 +22,7 @@
   {
     "id": 4,
     "universe": "Spongebob",
-    "favorite": false
+    "favorite": true
   },
   {
     "id": 5,
@@ -42,6 +42,6 @@
   {
     "id": 8,
     "universe": "R&B Singers",
-    "favorite": false
+    "favorite": true
   }
 ]
